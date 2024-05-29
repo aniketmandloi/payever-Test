@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
-import { RabbitMQModule } from '@nestjs-plus/rabbitmq';
 import { RabbitMQService } from './rabbitmq/rabbitmq.service';
 import { UsersController } from './users/users.controller';
 
