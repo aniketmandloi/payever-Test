@@ -26,11 +26,56 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Overview
+
+Hello, i tried my best to complete the most of the requirements of the Test but there are some of the things I really could'nt complete in 4 hours but here's the code which I have written. There are still some errors here as I am really new to Nest.js but I tried my best to implement the setup of the Rest.
+
+## Prerequisites
+
+Before you begin, make sure you have the following software installed on your machine:
+
+- Node.js and npm (Node Package Manager): [Download and Install Node.js](https://nodejs.org/)
+- MongoDB: [Download and Install MongoDB](https://www.mongodb.com/try/download/community)
+- RabbitMQ: [Download and Install RabbitMQ](https://www.rabbitmq.com/download.html)
+
+## Getting Started
+
+- Navigate to the project directory:
+
+  ```bash
+  cd payover-Test
+  ```
+
 ## Installation
 
 ```bash
 $ npm install
 ```
+
+## RabbitMQ Setup
+
+- Install RabbitMQ: [RabbitMQ](https://www.rabbitmq.com/docs/download#installation-guides).
+- Insure it is running Locally on standard Port: `brew services start rabbitmq`.
+
+## MongoDB Setup
+
+- Make sure your MongoDB server is running.
+
+  - Go into your MongoDB cloud clusters.
+  - Click on the `Database Access`, which is on the left of the sidebar. Click on `ADD NEW DATABASE USER` which will pop up a modal
+  - Fill out the `Password Authentication` with your desired username and password for the database of this particular project.
+  - Before saving this, click the `Built-in Role` dropdown, and select `Read and write to any database`.
+  - Click on `Database`, and on the left side of the sidebar, click the `connect` button, which is beside View Monitoring. A modal popup will be displayed, then click `connect your application` and copy the code snippet you find there.
+  - Create a `.env` file in the `server` directory.
+
+    - Add the following variables to the `.env` file:
+
+      ```env
+      PORT=4000
+      MONGODB_URL=<url you will copy from the cluster popup>
+      ```
+
+      Adjust the `PORT` and `MONGODB_URL` values as needed.
 
 ## Running the app
 
