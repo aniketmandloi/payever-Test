@@ -7,15 +7,20 @@ import axios from 'axios';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
+import { RabbitMQService } from 'src/rabbitmq/rabbitmq.service';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
+  constructor(
+    @InjectModel(User.name) private userModel: Model<User>,
+    private readonly rabbitMQService: RabbitMQService,
+  ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
     const createdUser = new this.userModel(createUserDto);
     await createdUser.save();
     // Send email and rabbit event (dummy)
+    await this.rabbitMQService.sendEvent('user.created', createdUser);
     console.log('Email and RabbitMQ event sent');
     return createdUser;
   }
