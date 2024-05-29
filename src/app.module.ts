@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
+import { RabbitMQModule } from '@nestjs-plus/rabbitmq';
+import { RabbitMQService } from './rabbitmq/rabbitmq.service';
+import { UsersController } from './users/users.controller';
 
 @Module({
   imports: [MongooseModule.forRoot('mongodb://localhost/nest'), UsersModule],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [UsersController],
+  providers: [RabbitMQService],
 })
 export class AppModule {}
